@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
-
+#include <conio.h>
 
 int system(const char *string);
 
@@ -110,6 +110,8 @@ void colocaBombas(int dificuldade, int tamanho, struct Bloco matriz[tamanho][tam
 }
 
 int main() {
+    char tecla;
+    int cod_tecla;
     int tamanho = -99, x = -99, y = -99, dificuldade = -99;
     char opc, temp;
 
@@ -137,14 +139,44 @@ int main() {
     colocaBombas(dificuldade, tamanho, campo);
 
     while (true){
-        imprimeCampo(tamanho, campo);
+        printf("%i %i\n", x, y);
+        //imprimeCampo(tamanho, campo);
 
-        printf("X: ");
+        /*printf("X: ");
         scanf(" %c", &opc);
 
         printf("Y: ");
-        scanf("%i", &y);
+        scanf("%i", &y);*/
         
+        while (1) {
+            if ( kbhit() ) {
+  
+                tecla = getch();
+                system("cls");
+
+                cod_tecla = (int)tecla;
+                if (cod_tecla == 27){return 0;}//sai do jogo
+                if (cod_tecla == 72){
+                    //printf("CIMA");
+                    y--;
+                    break;
+                } else if (cod_tecla == 75){
+                    //printf("ESQUERDA");
+                    x--;
+                    break;
+                } else if (cod_tecla == 77){
+                    //printf("DIREITA");
+                    x++;
+                    break;
+                } else if (cod_tecla == 80){
+                    //printf("BAIXO");
+                    y++;
+                    break;
+                }
+         
+            }
+        }
+
         if (y == 0){
             limpaTela();
             break;
