@@ -1,2 +1,2 @@
-# Projetos-Em-C
+# CampoMinadoEmC
 Alguns Projetos Aleatórios em C
